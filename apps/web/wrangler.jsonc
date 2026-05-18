@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "eveandlace-web",
+  "compatibility_date": "2026-05-18",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    {
+      "pattern": "eveandlace.com",
+      "custom_domain": true
+    }
+  ]
+}
