@@ -1,29 +1,46 @@
-# Eve & Lace Web
+# Eve & Lace Web App
 
-Independent storefront for `eveandlace.com`, based on the AliExpress store:
+Next.js storefront for [eveandlace.com](https://eveandlace.com).
 
-https://www.aliexpress.com/store/1105526094
+## Overview
 
-## Run
+This app exports a static multilingual storefront and deploys it to Cloudflare Worker Static Assets. The product experience is designed for adult intimate lingerie retail with restrained editorial styling, discreet service messaging, and marketplace-backed product links.
+
+## Routes
+
+| Route | Language |
+| --- | --- |
+| `/` | English |
+| `/zh` | Chinese |
+| `/es` | Spanish |
+| `/fr` | French |
+
+Each route uses the same storefront component in `app/storefront-page.tsx` with localized copy from `lib/i18n.ts`.
+
+## Key Files
+
+- `app/storefront-page.tsx` - shared storefront layout.
+- `lib/i18n.ts` - language dictionaries and route metadata.
+- `lib/store-data.ts` - curated fallback products, categories, and optional feed loader.
+- `public/assets/eve-lace/` - storefront imagery.
+- `wrangler.jsonc` - Cloudflare deployment and custom-domain route.
+
+## Development
 
 ```bash
 pnpm --filter web dev
 ```
 
-Open http://localhost:3000.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Languages
+## Quality Checks
 
-The storefront ships four static language versions:
+```bash
+pnpm --filter web typecheck
+pnpm --filter web build
+```
 
-- English: `/`
-- Chinese: `/zh`
-- Spanish: `/es`
-- French: `/fr`
-
-## Cloudflare Pages
-
-This app is configured for static export and Worker Static Assets. Build output is written to `apps/web/out`.
+## Deployment
 
 ```bash
 pnpm --filter web build
@@ -31,14 +48,30 @@ cd apps/web
 npx wrangler deploy
 ```
 
-## Store Sync
+Cloudflare serves the static export from `apps/web/out` and routes the Worker to `eveandlace.com`.
 
-The storefront reads product data from `apps/web/lib/store-data.ts`.
+## Catalog Sync
 
-By default it uses a local curated fallback because AliExpress blocks direct server-side scraping with a challenge page. For live updates, deploy with an environment variable:
+The app first tries to read product data from `EVE_LACE_STORE_FEED_URL`. If the feed is unavailable, it falls back to local curated data.
 
 ```bash
 EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 ```
 
-The feed should return the `StorefrontData` JSON shape exported from `store-data.ts`. The page revalidates the feed hourly when the hosting platform supports Next.js server rendering.
+The feed must return the `StorefrontData` JSON shape exported from `lib/store-data.ts`.
+
+## Release Notes
+
+### 1.1.0 - 2026-05-19
+
+- Added Chinese, Spanish, and French static routes.
+- Added localized navigation, product section text, category CTAs, service copy, sync status, newsletter text, footer links, and 18+ notice.
+- Added header language switcher with active-route styling.
+- Verified local typecheck and production build.
+- Deployed the multilingual build to Cloudflare.
+
+### 1.0.0 - 2026-05-19
+
+- Created the first production storefront for Eve & Lace.
+- Added responsive homepage sections and curated fallback catalog data.
+- Added Cloudflare Worker Static Assets configuration and custom-domain deployment.

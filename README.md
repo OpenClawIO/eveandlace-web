@@ -1,46 +1,97 @@
-# 体检报告解读系统
+# Eve & Lace
 
-一套面向普通用户与医生协作场景的智能体检报告解读系统，支持多格式报告解析、个性化风险评估、趋势追踪、自然语言解释与行动建议生成。
+Independent storefront for [eveandlace.com](https://eveandlace.com), built from the Eve & Lace AliExpress store profile and deployed on Cloudflare Worker Static Assets.
 
-## 系统目标
+The site is a static, production-ready storefront for intimate lingerie. It presents curated products, category navigation, private-shopping service notes, language-specific routes, and a data layer that can later be connected to an external store feed.
 
-- 让用户在 5 秒内看懂整体健康状态
-- 只突出真正值得关注的异常与趋势性风险
-- 每条结论都具备可追溯的医学依据与版本信息
-- 在“通俗易懂”和“专业可信”之间建立平衡
+## Live Site
 
-## 核心能力
+- Production: [https://eveandlace.com](https://eveandlace.com)
+- Cloudflare project: `eveandlace-web`
+- Source marketplace: [AliExpress Store 1105526094](https://www.aliexpress.com/store/1105526094)
 
-- 报告解析引擎：OCR、PDF 解析、结构化抽取、跨医院格式标准化
-- 智能解读与风险评估：异常判定、个体化参考范围修正、综合评分
-- 趋势追踪：多次报告对比、趋势恶化识别、边界风险预警
-- 自然语言解释：三层语言架构，支持追问式深度解释
-- 干预建议：饮食、运动、复查、就医优先级建议
-- 报告管理：档案管理、历史报告、摘要导出与分享
+## Language Routes
 
-## 文档导航
+| Language | URL |
+| --- | --- |
+| English | `/` |
+| Chinese | `/zh` |
+| Spanish | `/es` |
+| French | `/fr` |
 
-- [产品方案](./docs/product-prd.md)
-- [技术架构](./docs/technical-architecture.md)
-- [领域模型与评分规则](./docs/domain-model.md)
+## Tech Stack
 
-## 推荐仓库结构
+- Next.js 16 static export
+- React 19
+- TypeScript
+- Cloudflare Worker Static Assets
+- Wrangler deployment
+- pnpm workspace
+
+## Repository Structure
 
 ```text
 apps/
-  web/        用户端 Web / H5 应用
-  api/        后端 API、解析与规则服务
-packages/
-  domain/     领域模型、规则定义、共享类型
-
-docs/
-  product-prd.md
-  technical-architecture.md
-  domain-model.md
+  web/
+    app/                 Next.js App Router pages and shared storefront view
+    lib/                 Store data and i18n dictionaries
+    public/assets/       Storefront image assets
+    wrangler.jsonc       Cloudflare Worker Static Assets config
 ```
 
-## 建议分期
+## Local Development
 
-1. MVP：支持 PDF/图片上传、结构化解析、异常指标解读、健康总览页
-2. V1：接入历史报告对比、趋势分析、个性化风险修正、可追溯依据展示
-3. V2：对话式追问、外部医学知识库、医生协作与导出闭环
+```bash
+pnpm install
+pnpm --filter web dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Build And Typecheck
+
+```bash
+pnpm --filter web typecheck
+pnpm --filter web build
+```
+
+The static export is written to `apps/web/out`.
+
+## Deploy
+
+```bash
+cd apps/web
+npx wrangler deploy
+```
+
+The current deployment is routed to the custom domain `eveandlace.com` through `apps/web/wrangler.jsonc`.
+
+## Store Data Updates
+
+Product and category data live in [apps/web/lib/store-data.ts](./apps/web/lib/store-data.ts). The app uses curated fallback data because AliExpress blocks direct server-side scraping with an anti-bot challenge.
+
+For automated catalog updates, provide a JSON feed through:
+
+```bash
+EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
+```
+
+The feed should return the `StorefrontData` shape defined in `apps/web/lib/store-data.ts`.
+
+## Version History
+
+### 1.1.0 - 2026-05-19
+
+- Added Chinese, Spanish, and French storefront versions.
+- Added a language switcher in the header.
+- Split the storefront into a shared localized page component.
+- Added translation dictionaries for navigation, hero copy, product labels, categories, service blocks, newsletter, footer, and adult-use notice.
+- Deployed the multilingual site to Cloudflare Worker Static Assets.
+
+### 1.0.0 - 2026-05-19
+
+- Built the initial Eve & Lace independent storefront.
+- Added curated lingerie product and category data.
+- Added responsive storefront layout, product rail, category grid, service section, store sync status, and newsletter block.
+- Configured Cloudflare deployment for `eveandlace.com`.
+- Created and synchronized the GitHub repository.

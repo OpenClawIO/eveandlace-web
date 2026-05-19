@@ -1,8 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  transpilePackages: ['@health-report/domain']
+  output: 'export'
 };
 
 export default nextConfig;
