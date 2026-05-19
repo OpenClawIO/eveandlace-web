@@ -2,6 +2,18 @@
 
 All notable project updates are recorded here.
 
+## 1.1.1 - 2026-05-19
+
+### Added
+
+- Bilingual Chinese and English root README.
+- Bilingual Chinese and English Web app README.
+- Documentation notes for language routes, local development, deployment, catalog sync, and version history in both languages.
+
+### Changed
+
+- Expanded project documentation so GitHub readers can understand and maintain the storefront in either Chinese or English.
+
 ## 1.1.0 - 2026-05-19
 
 ### Added
