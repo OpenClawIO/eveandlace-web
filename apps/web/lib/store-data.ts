@@ -9,6 +9,7 @@ export type StoreProduct = {
 };
 
 export type StoreCategory = {
+  id: 'sets' | 'bodysuits' | 'robes' | 'accessories';
   name: string;
   href: string;
   image: string;
@@ -104,24 +105,28 @@ const fallbackData: StorefrontData = {
   products: fallbackProducts,
   categories: [
     {
+      id: 'sets',
       name: 'Lingerie Sets',
       href: sourceUrl,
       image: '/assets/eve-lace/product-lace-set.png',
       cta: 'Shop Sets'
     },
     {
+      id: 'bodysuits',
       name: 'Bodysuits',
       href: sourceUrl,
       image: '/assets/eve-lace/product-teddy.png',
       cta: 'Shop Bodysuits'
     },
     {
+      id: 'robes',
       name: 'Robes & Sleep',
       href: sourceUrl,
       image: '/assets/eve-lace/product-robe.png',
       cta: 'Shop Robes'
     },
     {
+      id: 'accessories',
       name: 'Accessories',
       href: sourceUrl,
       image: '/assets/eve-lace/product-accessory.png',
@@ -168,8 +173,8 @@ export async function getStorefrontData(): Promise<StorefrontData> {
   }
 }
 
-export function formatRefreshTime(value: string) {
-  return new Intl.DateTimeFormat('en', {
+export function formatRefreshTime(value: string, locale = 'en') {
+  return new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : locale, {
     month: 'short',
     day: 'numeric',
     year: 'numeric',

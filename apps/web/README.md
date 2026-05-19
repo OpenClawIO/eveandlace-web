@@ -12,6 +12,15 @@ pnpm --filter web dev
 
 Open http://localhost:3000.
 
+## Languages
+
+The storefront ships four static language versions:
+
+- English: `/`
+- Chinese: `/zh`
+- Spanish: `/es`
+- French: `/fr`
+
 ## Cloudflare Pages
 
 This app is configured for static export and Worker Static Assets. Build output is written to `apps/web/out`.
