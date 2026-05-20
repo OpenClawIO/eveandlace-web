@@ -54,6 +54,15 @@ Cloudflare 会从 `apps/web/out` 提供静态导出内容，并将 Worker 路由
 
 应用会优先尝试从 `EVE_LACE_STORE_FEED_URL` 读取商品数据。如果数据源不可用，则回退到本地精选数据。
 
+生产环境通过 Cloudflare Worker 执行后台同步：
+
+- Cron 表达式：`0 19 * * *`。
+- 执行时间：每天北京时间 03:00。
+- 缓存位置：Cloudflare KV `STORE_CACHE`。
+- 前台读取接口：`GET /api/storefront-data`。
+- 手动同步接口：`POST /api/sync-storefront`。
+- 如果 AliExpress 返回反自动化页面或解析失败，Worker 会保留上一份有效缓存。
+
 ```bash
 EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 ```
@@ -61,6 +70,14 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 该数据源必须返回 `lib/store-data.ts` 中导出的 `StorefrontData` JSON 结构。
 
 ### 更新记录
+
+#### 1.2.0 - 2026-05-20
+
+- 新增 Cloudflare Worker 后台商品同步。
+- 新增每天北京时间 03:00 的 Cron 定时同步。
+- 新增 Cloudflare KV 缓存和同域商品数据 API。
+- 前台改为静态页面加载后读取最新缓存数据。
+- AliExpress 抓取失败时保留上一份有效商品缓存，并支持后续配置稳定 JSON feed。
 
 #### 1.1.1 - 2026-05-19
 
@@ -137,6 +154,15 @@ Cloudflare serves the static export from `apps/web/out` and routes the Worker to
 
 The app first tries to read product data from `EVE_LACE_STORE_FEED_URL`. If the feed is unavailable, it falls back to local curated data.
 
+Production uses Cloudflare Worker background sync:
+
+- Cron expression: `0 19 * * *`.
+- Runtime: daily at 03:00 Asia/Shanghai.
+- Cache location: Cloudflare KV `STORE_CACHE`.
+- Frontend endpoint: `GET /api/storefront-data`.
+- Manual sync endpoint: `POST /api/sync-storefront`.
+- If AliExpress returns an anti-bot page or parsing fails, the Worker keeps the last valid cached catalog.
+
 ```bash
 EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 ```
@@ -144,6 +170,14 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 The feed must return the `StorefrontData` JSON shape exported from `lib/store-data.ts`.
 
 ### Release Notes
+
+#### 1.2.0 - 2026-05-20
+
+- Added Cloudflare Worker background catalog sync.
+- Added a daily Cron sync at 03:00 Asia/Shanghai.
+- Added Cloudflare KV cache and same-origin catalog data API.
+- Changed the frontend to read the latest cached catalog after static page load.
+- Kept the last valid product cache when AliExpress scraping fails, with stable JSON feed support for future integration.
 
 #### 1.1.1 - 2026-05-19
 

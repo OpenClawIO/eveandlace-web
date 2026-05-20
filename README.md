@@ -72,6 +72,14 @@ npx wrangler deploy
 
 商品和分类数据位于 [apps/web/lib/store-data.ts](./apps/web/lib/store-data.ts)。由于 AliExpress 会对服务器端直接抓取返回反自动化挑战页面，项目默认使用本地精选备用数据。
 
+线上站点已配置 Cloudflare Worker 后台同步：
+
+- 每天北京时间 03:00 自动执行一次同步。
+- 同步结果写入 Cloudflare KV：`STORE_CACHE`。
+- 前台页面加载后会请求 `/api/storefront-data`，用最新缓存商品替换构建时备用数据。
+- 可通过 `POST /api/sync-storefront` 手动触发一次同步。
+- 如果 AliExpress 返回反自动化页面或商品解析失败，系统会保留上一份有效缓存，不会用失败结果覆盖线上商品。
+
 如果需要自动同步商品目录，可以提供 JSON 数据源：
 
 ```bash
@@ -81,6 +89,15 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 该数据源需要返回 `apps/web/lib/store-data.ts` 中定义的 `StorefrontData` JSON 结构。
 
 ### 版本记录
+
+#### 1.2.0 - 2026-05-20
+
+- 新增 Cloudflare Worker 后台商品同步。
+- 新增每天北京时间 03:00 的 Cron 定时任务。
+- 新增 `STORE_CACHE` KV 缓存，用于保存最新商品数据。
+- 新增 `/api/storefront-data` 前台读取接口和 `/api/sync-storefront` 手动同步接口。
+- 前台改为静态页面加客户端数据刷新，支持商品数据不重建也能更新。
+- AliExpress 抓取失败时保留上一份有效数据，并支持后续接入 `STORE_FEED_URL` 稳定数据源。
 
 #### 1.1.1 - 2026-05-19
 
@@ -178,6 +195,14 @@ The current deployment is routed to the custom domain `eveandlace.com` through `
 
 Product and category data live in [apps/web/lib/store-data.ts](./apps/web/lib/store-data.ts). The app uses curated fallback data because AliExpress blocks direct server-side scraping with an anti-bot challenge.
 
+The production site now includes Cloudflare Worker background sync:
+
+- A scheduled job runs once per day at 03:00 Asia/Shanghai.
+- Sync results are stored in Cloudflare KV: `STORE_CACHE`.
+- The storefront requests `/api/storefront-data` after page load and replaces build-time fallback data with the latest cached catalog.
+- A manual sync can be triggered with `POST /api/sync-storefront`.
+- If AliExpress returns an anti-bot page or parsing fails, the system keeps the last valid cached catalog instead of overwriting production data with a failed result.
+
 For automated catalog updates, provide a JSON feed through:
 
 ```bash
@@ -187,6 +212,15 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 The feed should return the `StorefrontData` shape defined in `apps/web/lib/store-data.ts`.
 
 ### Version History
+
+#### 1.2.0 - 2026-05-20
+
+- Added Cloudflare Worker background catalog sync.
+- Added a daily Cron trigger at 03:00 Asia/Shanghai.
+- Added `STORE_CACHE` KV storage for the latest product payload.
+- Added `/api/storefront-data` for the frontend and `/api/sync-storefront` for manual sync runs.
+- Changed the frontend to static HTML with client-side catalog refresh so product data can update without a rebuild.
+- Preserved the last valid data when AliExpress scraping fails, with optional `STORE_FEED_URL` support for a stable feed source.
 
 #### 1.1.1 - 2026-05-19
 

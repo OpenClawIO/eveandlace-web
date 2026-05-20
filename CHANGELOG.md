@@ -2,6 +2,23 @@
 
 All notable project updates are recorded here.
 
+## 1.2.0 - 2026-05-20
+
+### Added
+
+- Cloudflare Worker background sync for storefront product data.
+- Daily cron trigger at `0 19 * * *`, which runs at 03:00 Asia/Shanghai.
+- `STORE_CACHE` KV namespace for the latest synced storefront payload.
+- `/api/storefront-data` endpoint for the static frontend to load the latest cached catalog.
+- `/api/sync-storefront` endpoint for manual sync runs.
+- AliExpress HTML parsing with JSON-LD and product-link extraction fallbacks.
+- Optional `STORE_FEED_URL` support for a stable JSON catalog feed when AliExpress blocks direct scraping.
+
+### Changed
+
+- Refactored the storefront rendering into a client-hydrated component so the static site can update product data without a rebuild.
+- Preserved the last valid cached catalog when a marketplace sync fails.
+
 ## 1.1.1 - 2026-05-19
 
 ### Added

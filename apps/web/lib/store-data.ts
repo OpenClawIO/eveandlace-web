@@ -25,11 +25,15 @@ export type StorefrontData = {
   lastRefreshed: string;
   products: StoreProduct[];
   categories: StoreCategory[];
+  syncStatus?: {
+    source: 'aliexpress' | 'feed' | 'fallback';
+    message: string;
+  };
 };
 
-const sourceUrl = 'https://www.aliexpress.com/store/1105526094';
+export const sourceUrl = 'https://www.aliexpress.com/store/1105526094';
 
-const fallbackProducts: StoreProduct[] = [
+export const fallbackProducts: StoreProduct[] = [
   {
     id: 'lace-underwire-set',
     title: 'Lace Underwire Set',
@@ -95,7 +99,7 @@ const fallbackProducts: StoreProduct[] = [
   }
 ];
 
-const fallbackData: StorefrontData = {
+export const fallbackData: StorefrontData = {
   brand: 'Eve & Lace',
   storeTitle: 'Eve & Lace Store - Amazing products with exclusive discounts on AliExpress',
   sourceUrl,
@@ -132,10 +136,14 @@ const fallbackData: StorefrontData = {
       image: '/assets/eve-lace/product-accessory.png',
       cta: 'Shop Accessories'
     }
-  ]
+  ],
+  syncStatus: {
+    source: 'fallback',
+    message: 'Using curated fallback data until a live marketplace sync succeeds.'
+  }
 };
 
-function isStorefrontData(value: unknown): value is StorefrontData {
+export function isStorefrontData(value: unknown): value is StorefrontData {
   if (!value || typeof value !== 'object') {
     return false;
   }

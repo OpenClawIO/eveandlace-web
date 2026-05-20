@@ -1,10 +1,23 @@
 {
   "$schema": "../../node_modules/wrangler/config-schema.json",
   "name": "eveandlace-web",
-  "compatibility_date": "2026-05-18",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-05-20",
   "assets": {
     "directory": "./out",
     "not_found_handling": "404-page"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "STORE_CACHE",
+      "id": "5f104a2a3b774219a668b964993b8d8f"
+    }
+  ],
+  "vars": {
+    "STORE_SOURCE_URL": "https://www.aliexpress.com/store/1105526094"
+  },
+  "triggers": {
+    "crons": ["0 19 * * *"]
   },
   "routes": [
     {
