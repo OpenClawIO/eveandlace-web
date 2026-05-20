@@ -20,6 +20,7 @@ Eve & Lace 是 [eveandlace.com](https://eveandlace.com) 的独立站项目，基
 | 中文 | `/zh` |
 | 西语 | `/es` |
 | 法语 | `/fr` |
+| 阿拉伯语 | `/ar` |
 
 ### 技术栈
 
@@ -90,6 +91,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 
 ### 版本记录
 
+#### 1.2.1 - 2026-05-20
+
+- 新增阿拉伯语店铺版本 `/ar`。
+- 新增阿拉伯语导航、首屏、商品标题、分类、服务说明、订阅、页脚和 18+ 提示文案。
+- 阿拉伯语页面启用 RTL 从右到左排版方向。
+
 #### 1.2.0 - 2026-05-20
 
 - 新增 Cloudflare Worker 后台商品同步。
@@ -143,6 +150,7 @@ The site is a static, production-ready storefront for intimate lingerie. It pres
 | Chinese | `/zh` |
 | Spanish | `/es` |
 | French | `/fr` |
+| Arabic | `/ar` |
 
 ### Tech Stack
 
@@ -212,6 +220,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 The feed should return the `StorefrontData` shape defined in `apps/web/lib/store-data.ts`.
 
 ### Version History
+
+#### 1.2.1 - 2026-05-20
+
+- Added Arabic storefront at `/ar`.
+- Added Arabic translations for navigation, hero content, product titles, categories, service blocks, newsletter copy, footer content, and adult-use notice.
+- Enabled RTL page direction for the Arabic storefront.
 
 #### 1.2.0 - 2026-05-20
 

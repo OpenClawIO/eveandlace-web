@@ -42,7 +42,7 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
   const categories = useMemo(() => store.categories.map((category) => localizeCategory(category, locale)), [store.categories, locale]);
 
   return (
-    <main>
+    <main dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
       <div className="top-strip" aria-label="Store promises">
         {t.topStrip.map((item) => (
           <span key={item}>{item}</span>

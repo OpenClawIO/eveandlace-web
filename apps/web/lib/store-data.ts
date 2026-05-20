@@ -182,7 +182,7 @@ export async function getStorefrontData(): Promise<StorefrontData> {
 }
 
 export function formatRefreshTime(value: string, locale = 'en') {
-  return new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : locale, {
+  return new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : locale === 'ar' ? 'ar' : locale, {
     month: 'short',
     day: 'numeric',
     year: 'numeric',

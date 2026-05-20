@@ -14,6 +14,7 @@
 | `/zh` | 中文 |
 | `/es` | 西语 |
 | `/fr` | 法语 |
+| `/ar` | 阿拉伯语 |
 
 每个路由都复用 `app/storefront-page.tsx` 中的店铺页面组件，并从 `lib/i18n.ts` 读取本地化文案。
 
@@ -71,6 +72,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 
 ### 更新记录
 
+#### 1.2.1 - 2026-05-20
+
+- 新增阿拉伯语静态路由 `/ar`。
+- 新增阿拉伯语页面文案、商品标题和分类翻译。
+- 阿拉伯语页面启用 RTL 从右到左排版。
+
 #### 1.2.0 - 2026-05-20
 
 - 新增 Cloudflare Worker 后台商品同步。
@@ -114,6 +121,7 @@ This app exports a static multilingual storefront and deploys it to Cloudflare W
 | `/zh` | Chinese |
 | `/es` | Spanish |
 | `/fr` | French |
+| `/ar` | Arabic |
 
 Each route uses the same storefront component in `app/storefront-page.tsx` with localized copy from `lib/i18n.ts`.
 
@@ -170,6 +178,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 The feed must return the `StorefrontData` JSON shape exported from `lib/store-data.ts`.
 
 ### Release Notes
+
+#### 1.2.1 - 2026-05-20
+
+- Added Arabic static route at `/ar`.
+- Added Arabic page copy, product titles, and category translations.
+- Enabled RTL right-to-left layout for the Arabic route.
 
 #### 1.2.0 - 2026-05-20
 

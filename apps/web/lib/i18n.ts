@@ -1,6 +1,6 @@
 import type { StoreCategory, StoreProduct } from '@/lib/store-data';
 
-export type Locale = 'en' | 'zh' | 'es' | 'fr';
+export type Locale = 'en' | 'zh' | 'es' | 'fr' | 'ar';
 
 type ProductText = Pick<StoreProduct, 'title'>;
 type CategoryText = Pick<StoreCategory, 'name' | 'cta'>;
@@ -9,7 +9,8 @@ export const locales: Array<{ code: Locale; label: string; href: string }> = [
   { code: 'en', label: 'EN', href: '/' },
   { code: 'zh', label: '中文', href: '/zh' },
   { code: 'es', label: 'ES', href: '/es' },
-  { code: 'fr', label: 'FR', href: '/fr' }
+  { code: 'fr', label: 'FR', href: '/fr' },
+  { code: 'ar', label: 'AR', href: '/ar' }
 ];
 
 export const dictionaries = {
@@ -172,6 +173,46 @@ export const dictionaries = {
     shipping: 'Livraison',
     returns: 'Retours et échanges',
     ageNote: 'Réservé aux 18 ans et plus. Ce site vend des produits pour adultes. En entrant, vous confirmez avoir 18 ans ou plus.'
+  },
+  ar: {
+    topStrip: ['شحن عالمي', 'تغليف خاص · إرجاع سهل', 'دفع آمن'],
+    nav: {
+      newIn: 'وصل حديثا',
+      sets: 'الأطقم',
+      bodysuits: 'بودي سوت',
+      sizeGuide: 'دليل المقاسات',
+      storeSync: 'مزامنة المتجر'
+    },
+    headerAction: 'زيارة المتجر',
+    heroTitle: 'قطع حميمة بلمسة أكثر نعومة',
+    heroCopy: 'لانجري مختار، أطقم دانتيل، وأساسيات خزانة خاصة يتم تحديثها من متجرنا على المنصة.',
+    shopNew: 'تسوقي الجديد',
+    viewStore: 'عرض متجر AliExpress',
+    refreshedTitle: 'محدث من متجرنا',
+    refreshedSub: 'اختيارات جديدة ومحدثة',
+    viewAll: 'عرض الكل',
+    services: [
+      ['جودة يمكنك الشعور بها', 'أقمشة مختارة بعناية وتفاصيل مدروسة لثقة يومية.'],
+      ['اختاري المقاس المناسب', 'ملاحظات مقاسات شاملة ودليل واضح قبل الطلب.'],
+      ['خصوصية في التصميم', 'تغليف عادي وتفاصيل دفع خاصة لمزيد من الاطمئنان.'],
+      ['آمن وخاص', 'تتم عملية الدفع عبر بنية موثوقة من منصة التسوق.']
+    ],
+    syncTitle: 'حالة مزامنة المتجر',
+    lastRefresh: 'آخر تحديث',
+    source: 'المصدر',
+    syncCopy: 'يتم تحميل بيانات المنتجات عبر طبقة بيانات المتجر، لذلك يمكن للصفحة التحديث عند تغير كتالوج المنصة.',
+    viewSource: 'عرض المتجر المصدر',
+    newsletterTitle: 'ابقي على اطلاع',
+    newsletterCopy: 'الجديد، العروض الحصرية، وملاحظات المقاس تصل بهدوء إلى بريدك.',
+    emailPlaceholder: 'عنوان بريدك الإلكتروني',
+    subscribe: 'اشتراك',
+    privacy: 'نحترم خصوصيتك.',
+    footerTagline: 'قطع حميمة بلمسة أكثر نعومة.',
+    footerShop: 'تسوق',
+    footerHelp: 'مساعدة',
+    shipping: 'الشحن والتوصيل',
+    returns: 'الإرجاع والاستبدال',
+    ageNote: 'لمن هم 18 عاما فأكثر فقط. يبيع هذا الموقع منتجات للبالغين. بدخولك تؤكد أن عمرك 18 عاما أو أكثر.'
   }
 } satisfies Record<Locale, Record<string, unknown>>;
 
@@ -203,6 +244,15 @@ export const productText: Record<Locale, Record<string, ProductText>> = {
     'strappy-teddy': { title: 'Teddy à brides' },
     'sheer-lace-set': { title: 'Ensemble dentelle transparente' },
     'lingerie-accessory-set': { title: 'Set d’accessoires lingerie' }
+  },
+  ar: {
+    'lace-underwire-set': { title: 'طقم دانتيل بدعامة' },
+    'floral-embroidery-set': { title: 'طقم بتطريز زهري' },
+    'lace-bodysuit': { title: 'بودي سوت دانتيل' },
+    'satin-lace-robe': { title: 'روب ساتان ودانتيل' },
+    'strappy-teddy': { title: 'تيدي بأشرطة' },
+    'sheer-lace-set': { title: 'طقم دانتيل شفاف' },
+    'lingerie-accessory-set': { title: 'طقم إكسسوارات لانجري' }
   }
 };
 
@@ -230,6 +280,12 @@ export const categoryText: Record<Locale, Record<StoreCategory['id'], CategoryTe
     bodysuits: { name: 'Bodys', cta: 'Voir les bodys' },
     robes: { name: 'Peignoirs & nuit', cta: 'Voir les peignoirs' },
     accessories: { name: 'Accessoires', cta: 'Voir les accessoires' }
+  },
+  ar: {
+    sets: { name: 'أطقم لانجري', cta: 'تسوقي الأطقم' },
+    bodysuits: { name: 'بودي سوت', cta: 'تسوقي البودي سوت' },
+    robes: { name: 'روب وملابس نوم', cta: 'تسوقي الروب' },
+    accessories: { name: 'إكسسوارات', cta: 'تسوقي الإكسسوارات' }
   }
 };
 

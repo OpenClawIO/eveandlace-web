@@ -2,6 +2,14 @@
 
 All notable project updates are recorded here.
 
+## 1.2.1 - 2026-05-20
+
+### Added
+
+- Arabic storefront at `/ar`.
+- Arabic translations for navigation, hero content, product titles, category labels, service blocks, newsletter copy, footer content, and adult-use notices.
+- RTL page direction for Arabic storefront rendering.
+
 ## 1.2.0 - 2026-05-20
 
 ### Added
