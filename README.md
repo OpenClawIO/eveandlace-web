@@ -91,6 +91,11 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 
 ### 版本记录
 
+#### 1.2.2 - 2026-05-21
+
+- 新增 Eve & Lace 企业 logo 静态资源。
+- 将页眉和页脚的文字品牌标识替换为企业 logo。
+
 #### 1.2.1 - 2026-05-20
 
 - 新增阿拉伯语店铺版本 `/ar`。
@@ -220,6 +225,11 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 The feed should return the `StorefrontData` shape defined in `apps/web/lib/store-data.ts`.
 
 ### Version History
+
+#### 1.2.2 - 2026-05-21
+
+- Added the Eve & Lace company logo as a static asset.
+- Replaced text-only header and footer brand marks with the company logo.
 
 #### 1.2.1 - 2026-05-20
 

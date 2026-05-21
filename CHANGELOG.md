@@ -2,6 +2,13 @@
 
 All notable project updates are recorded here.
 
+## 1.2.2 - 2026-05-21
+
+### Added
+
+- Added the official Eve & Lace company logo asset to the storefront.
+- Replaced text-only brand marks in the header and footer with the company logo.
+
 ## 1.2.1 - 2026-05-20
 
 ### Added

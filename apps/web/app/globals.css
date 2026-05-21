@@ -81,6 +81,21 @@ img {
   letter-spacing: -0.03em;
 }
 
+.brand-logo {
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-logo-header {
+  height: 56px;
+  max-width: 170px;
+}
+
+.brand-logo-footer {
+  height: 90px;
+  max-width: 220px;
+}
+
 .site-header nav {
   display: flex;
   gap: 34px;
@@ -459,6 +474,10 @@ img {
   font-size: 34px;
 }
 
+.site-footer .brand-logo {
+  margin-bottom: 12px;
+}
+
 .site-footer a:not(.brand) {
   display: block;
   margin-top: 8px;
@@ -542,6 +561,11 @@ img {
     height: auto;
     grid-template-columns: 1fr;
     padding-block: 18px;
+  }
+
+  .brand-logo-header {
+    height: 64px;
+    max-width: 190px;
   }
 
   .site-header nav {
