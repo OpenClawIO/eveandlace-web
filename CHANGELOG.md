@@ -2,6 +2,14 @@
 
 All notable project updates are recorded here.
 
+## 1.2.3 - 2026-05-28
+
+### Changed
+
+- The storefront now renders every product returned by the synchronized catalog instead of limiting the product section to seven cards.
+- Removed the Worker HTML parser cap that previously kept at most twelve parsed AliExpress products.
+- Added visible listed-product counts to the product section in every supported language.
+
 ## 1.2.2 - 2026-05-21
 
 ### Added

@@ -78,6 +78,7 @@ npx wrangler deploy
 - 每天北京时间 03:00 自动执行一次同步。
 - 同步结果写入 Cloudflare KV：`STORE_CACHE`。
 - 前台页面加载后会请求 `/api/storefront-data`，用最新缓存商品替换构建时备用数据。
+- 商品区会展示同步目录中的全部商品，并显示当前上架商品数量。
 - 可通过 `POST /api/sync-storefront` 手动触发一次同步。
 - 如果 AliExpress 返回反自动化页面或商品解析失败，系统会保留上一份有效缓存，不会用失败结果覆盖线上商品。
 
@@ -90,6 +91,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 该数据源需要返回 `apps/web/lib/store-data.ts` 中定义的 `StorefrontData` JSON 结构。
 
 ### 版本记录
+
+#### 1.2.3 - 2026-05-28
+
+- 商品区改为展示同步目录中的全部商品，不再只展示前 7 个。
+- 移除 Worker 解析速卖通商品时最多 12 个商品的数量限制。
+- 新增多语言“上架商品数量”显示，用于核对独立站与同步目录数量。
 
 #### 1.2.2 - 2026-05-21
 
@@ -213,6 +220,7 @@ The production site now includes Cloudflare Worker background sync:
 - A scheduled job runs once per day at 03:00 Asia/Shanghai.
 - Sync results are stored in Cloudflare KV: `STORE_CACHE`.
 - The storefront requests `/api/storefront-data` after page load and replaces build-time fallback data with the latest cached catalog.
+- The product section renders every product in the synchronized catalog and displays the current listed-product count.
 - A manual sync can be triggered with `POST /api/sync-storefront`.
 - If AliExpress returns an anti-bot page or parsing fails, the system keeps the last valid cached catalog instead of overwriting production data with a failed result.
 
@@ -225,6 +233,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 The feed should return the `StorefrontData` shape defined in `apps/web/lib/store-data.ts`.
 
 ### Version History
+
+#### 1.2.3 - 2026-05-28
+
+- Changed the product section to render every product in the synchronized catalog instead of only the first seven.
+- Removed the Worker parser cap that kept at most twelve AliExpress products.
+- Added multilingual listed-product count display for checking storefront/catalog parity.
 
 #### 1.2.2 - 2026-05-21
 

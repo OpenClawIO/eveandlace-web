@@ -167,7 +167,7 @@ function isChallengePage(html: string) {
 }
 
 function parseProductsFromHtml(html: string, storeUrl: string): StoreProduct[] {
-  return uniqueProducts([...parseJsonLdProducts(html, storeUrl), ...parseAnchorProducts(html, storeUrl)]).slice(0, 12);
+  return uniqueProducts([...parseJsonLdProducts(html, storeUrl), ...parseAnchorProducts(html, storeUrl)]);
 }
 
 function parseJsonLdProducts(html: string, storeUrl: string): StoreProduct[] {

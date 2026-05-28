@@ -61,6 +61,7 @@ Cloudflare 会从 `apps/web/out` 提供静态导出内容，并将 Worker 路由
 - 执行时间：每天北京时间 03:00。
 - 缓存位置：Cloudflare KV `STORE_CACHE`。
 - 前台读取接口：`GET /api/storefront-data`。
+- 商品展示规则：展示同步目录中的全部商品，并显示上架商品数量。
 - 手动同步接口：`POST /api/sync-storefront`。
 - 如果 AliExpress 返回反自动化页面或解析失败，Worker 会保留上一份有效缓存。
 
@@ -71,6 +72,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 该数据源必须返回 `lib/store-data.ts` 中导出的 `StorefrontData` JSON 结构。
 
 ### 更新记录
+
+#### 1.2.3 - 2026-05-28
+
+- 商品区改为展示同步目录中的全部商品。
+- 移除 Worker 解析商品时最多 12 个商品的限制。
+- 新增多语言上架商品数量显示。
 
 #### 1.2.2 - 2026-05-21
 
@@ -173,6 +180,7 @@ Production uses Cloudflare Worker background sync:
 - Runtime: daily at 03:00 Asia/Shanghai.
 - Cache location: Cloudflare KV `STORE_CACHE`.
 - Frontend endpoint: `GET /api/storefront-data`.
+- Product display rule: render every product in the synchronized catalog and display the listed-product count.
 - Manual sync endpoint: `POST /api/sync-storefront`.
 - If AliExpress returns an anti-bot page or parsing fails, the Worker keeps the last valid cached catalog.
 
@@ -183,6 +191,12 @@ EVE_LACE_STORE_FEED_URL=https://your-feed.example.com/eve-lace.json
 The feed must return the `StorefrontData` JSON shape exported from `lib/store-data.ts`.
 
 ### Release Notes
+
+#### 1.2.3 - 2026-05-28
+
+- Changed the product section to render every product in the synchronized catalog.
+- Removed the Worker parser limit of twelve products.
+- Added multilingual listed-product count display.
 
 #### 1.2.2 - 2026-05-21
 

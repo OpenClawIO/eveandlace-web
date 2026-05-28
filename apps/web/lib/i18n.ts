@@ -30,6 +30,7 @@ export const dictionaries = {
     viewStore: 'View AliExpress store',
     refreshedTitle: 'Refreshed from our store',
     refreshedSub: 'New and updated picks',
+    productCount: 'Listed products',
     viewAll: 'View all',
     services: [
       ['Quality you can feel', 'Carefully selected fabrics and thoughtful details for daily confidence.'],
@@ -70,6 +71,7 @@ export const dictionaries = {
     viewStore: '查看 AliExpress 店铺',
     refreshedTitle: '来自店铺的更新',
     refreshedSub: '新品与更新精选',
+    productCount: '上架商品数量',
     viewAll: '查看全部',
     services: [
       ['触手可感的品质', '精选面料与细节设计，为日常自信加一点温柔。'],
@@ -110,6 +112,7 @@ export const dictionaries = {
     viewStore: 'Ver tienda en AliExpress',
     refreshedTitle: 'Actualizado desde la tienda',
     refreshedSub: 'Selecciones nuevas y recientes',
+    productCount: 'Productos publicados',
     viewAll: 'Ver todo',
     services: [
       ['Calidad que se siente', 'Telas cuidadosamente seleccionadas y detalles pensados para la confianza diaria.'],
@@ -150,6 +153,7 @@ export const dictionaries = {
     viewStore: 'Voir la boutique AliExpress',
     refreshedTitle: 'Actualisé depuis la boutique',
     refreshedSub: 'Nouveautés et sélections récentes',
+    productCount: 'Produits en ligne',
     viewAll: 'Tout voir',
     services: [
       ['Une qualité qui se ressent', 'Matières soigneusement choisies et détails pensés pour une confiance au quotidien.'],
@@ -190,6 +194,7 @@ export const dictionaries = {
     viewStore: 'عرض متجر AliExpress',
     refreshedTitle: 'محدث من متجرنا',
     refreshedSub: 'اختيارات جديدة ومحدثة',
+    productCount: 'عدد المنتجات المعروضة',
     viewAll: 'عرض الكل',
     services: [
       ['جودة يمكنك الشعور بها', 'أقمشة مختارة بعناية وتفاصيل مدروسة لثقة يومية.'],

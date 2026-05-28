@@ -35,8 +35,8 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
     };
   }, []);
 
-  const heroProducts = useMemo(
-    () => store.products.slice(0, 7).map((product) => localizeProduct(product, locale)),
+  const listedProducts = useMemo(
+    () => store.products.map((product) => localizeProduct(product, locale)),
     [store.products, locale]
   );
   const categories = useMemo(() => store.categories.map((category) => localizeCategory(category, locale)), [store.categories, locale]);
@@ -95,12 +95,15 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
           <div>
             <h2>{t.refreshedTitle}</h2>
             <p>{t.refreshedSub}</p>
+            <p className="product-count">
+              {t.productCount}: {listedProducts.length}
+            </p>
           </div>
           <a href={store.sourceUrl}>{t.viewAll}</a>
         </div>
 
         <div className="product-rail">
-          {heroProducts.map((product) => (
+          {listedProducts.map((product) => (
             <a className="product-card" href={product.href} key={product.id}>
               <img src={product.image} alt={product.title} />
               <span>{product.title}</span>
