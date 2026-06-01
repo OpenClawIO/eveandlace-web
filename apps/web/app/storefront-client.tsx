@@ -51,7 +51,7 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
 
       <header className="site-header">
         <a className="brand" href={locale === 'en' ? '/' : `/${locale}`} aria-label="Eve & Lace home">
-          <img className="brand-logo brand-logo-header" src="/assets/eve-lace/logo.jpg" alt={store.brand} />
+          <img className="brand-logo brand-logo-header" src="/assets/eve-lace/logo-mark.png" alt={store.brand} />
         </a>
         <nav aria-label="Primary navigation">
           <a href="#new-in">{t.nav.newIn}</a>
@@ -170,7 +170,7 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
       <footer className="site-footer">
         <div>
           <a className="brand" href={locale === 'en' ? '/' : `/${locale}`}>
-            <img className="brand-logo brand-logo-footer" src="/assets/eve-lace/logo.jpg" alt={store.brand} />
+            <img className="brand-logo brand-logo-footer" src="/assets/eve-lace/logo-mark.png" alt={store.brand} />
           </a>
           <p>{t.footerTagline}</p>
         </div>

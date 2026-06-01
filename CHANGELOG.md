@@ -2,6 +2,13 @@
 
 All notable project updates are recorded here.
 
+## 1.2.7 - 2026-06-01
+
+### Changed
+
+- Reworked the Eve & Lace logo asset to keep only the upper illustration, remove the wordmark, use a transparent background, and apply rounded corners.
+- Updated storefront header, footer, and favicon assets to use the simplified logo mark.
+
 ## 1.2.6 - 2026-06-01
 
 ### Added
