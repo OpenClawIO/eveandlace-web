@@ -2,6 +2,13 @@
 
 All notable project updates are recorded here.
 
+## 1.2.4 - 2026-06-01
+
+### Changed
+
+- Removed Easy returns messaging from the top strip.
+- Added footer contact information with email, telephone, and location.
+
 ## 1.2.3 - 2026-05-28
 
 ### Changed

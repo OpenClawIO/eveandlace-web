@@ -1,6 +1,7 @@
 {
   "$schema": "../../node_modules/wrangler/config-schema.json",
   "name": "eveandlace-web",
+  "account_id": "fbc1a478353e6a6cb43a5a464e713c4f",
   "main": "src/worker.ts",
   "compatibility_date": "2026-05-20",
   "assets": {

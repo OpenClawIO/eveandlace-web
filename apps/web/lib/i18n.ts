@@ -15,7 +15,7 @@ export const locales: Array<{ code: Locale; label: string; href: string }> = [
 
 export const dictionaries = {
   en: {
-    topStrip: ['Worldwide shipping', 'Discreet packaging · Easy returns', 'Secure checkout'],
+    topStrip: ['Worldwide shipping', 'Discreet packaging', 'Secure checkout'],
     nav: {
       newIn: 'New In',
       sets: 'Sets',
@@ -53,10 +53,14 @@ export const dictionaries = {
     footerHelp: 'Help',
     shipping: 'Shipping & Delivery',
     returns: 'Returns & Exchanges',
+    contactTitle: 'Contact',
+    contactEmail: 'iamhuman.api@gmail.com',
+    contactTel: '+1 980 999 0101',
+    contactLocation: 'Nanjing, China',
     ageNote: '18+ Only. This site sells adult products. By entering, you confirm you are 18 years of age or older.'
   },
   zh: {
-    topStrip: ['全球配送', '隐私包装 · 轻松退换', '安全结账'],
+    topStrip: ['全球配送', '隐私包装', '安全结账'],
     nav: {
       newIn: '新品',
       sets: '套装',
@@ -94,10 +98,14 @@ export const dictionaries = {
     footerHelp: '帮助',
     shipping: '配送与交付',
     returns: '退换货',
+    contactTitle: '联系信息',
+    contactEmail: 'iamhuman.api@gmail.com',
+    contactTel: '+1 980 999 0101',
+    contactLocation: '中国南京',
     ageNote: '仅限 18 岁以上。本网站销售成人用品。进入即表示你确认已年满 18 岁。'
   },
   es: {
-    topStrip: ['Envíos internacionales', 'Empaque discreto · Devoluciones sencillas', 'Pago seguro'],
+    topStrip: ['Envíos internacionales', 'Empaque discreto', 'Pago seguro'],
     nav: {
       newIn: 'Novedades',
       sets: 'Conjuntos',
@@ -135,10 +143,14 @@ export const dictionaries = {
     footerHelp: 'Ayuda',
     shipping: 'Envíos y entrega',
     returns: 'Devoluciones y cambios',
+    contactTitle: 'Contacto',
+    contactEmail: 'iamhuman.api@gmail.com',
+    contactTel: '+1 980 999 0101',
+    contactLocation: 'Nankín, China',
     ageNote: 'Solo para mayores de 18 años. Este sitio vende productos para adultos. Al entrar, confirmas que tienes 18 años o más.'
   },
   fr: {
-    topStrip: ['Livraison internationale', 'Emballage discret · Retours simples', 'Paiement sécurisé'],
+    topStrip: ['Livraison internationale', 'Emballage discret', 'Paiement sécurisé'],
     nav: {
       newIn: 'Nouveautés',
       sets: 'Ensembles',
@@ -176,10 +188,14 @@ export const dictionaries = {
     footerHelp: 'Aide',
     shipping: 'Livraison',
     returns: 'Retours et échanges',
+    contactTitle: 'Contact',
+    contactEmail: 'iamhuman.api@gmail.com',
+    contactTel: '+1 980 999 0101',
+    contactLocation: 'Nankin, Chine',
     ageNote: 'Réservé aux 18 ans et plus. Ce site vend des produits pour adultes. En entrant, vous confirmez avoir 18 ans ou plus.'
   },
   ar: {
-    topStrip: ['شحن عالمي', 'تغليف خاص · إرجاع سهل', 'دفع آمن'],
+    topStrip: ['شحن عالمي', 'تغليف خاص', 'دفع آمن'],
     nav: {
       newIn: 'وصل حديثا',
       sets: 'الأطقم',
@@ -217,6 +233,10 @@ export const dictionaries = {
     footerHelp: 'مساعدة',
     shipping: 'الشحن والتوصيل',
     returns: 'الإرجاع والاستبدال',
+    contactTitle: 'معلومات التواصل',
+    contactEmail: 'iamhuman.api@gmail.com',
+    contactTel: '+1 980 999 0101',
+    contactLocation: 'نانجينغ، الصين',
     ageNote: 'لمن هم 18 عاما فأكثر فقط. يبيع هذا الموقع منتجات للبالغين. بدخولك تؤكد أن عمرك 18 عاما أو أكثر.'
   }
 } satisfies Record<Locale, Record<string, unknown>>;

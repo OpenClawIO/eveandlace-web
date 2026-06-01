@@ -186,6 +186,12 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
           <a href={store.sourceUrl}>{t.shipping}</a>
           <a href={store.sourceUrl}>{t.returns}</a>
         </div>
+        <div className="contact-info">
+          <h3>{t.contactTitle}</h3>
+          <a href={`mailto:${t.contactEmail}`}>{t.contactEmail}</a>
+          <a href={`tel:${t.contactTel.replaceAll(' ', '')}`}>{t.contactTel}</a>
+          <span>{t.contactLocation}</span>
+        </div>
         <div className="age-note">
           <strong>18+</strong>
           <p>{t.ageNote}</p>
