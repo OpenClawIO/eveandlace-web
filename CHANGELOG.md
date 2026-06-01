@@ -2,6 +2,12 @@
 
 All notable project updates are recorded here.
 
+## 1.2.6 - 2026-06-01
+
+### Added
+
+- Added a standard `/favicon.ico` fallback so Chrome can resolve the tab icon consistently.
+
 ## 1.2.5 - 2026-06-01
 
 ### Added
