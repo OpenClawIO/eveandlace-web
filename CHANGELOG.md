@@ -2,6 +2,12 @@
 
 All notable project updates are recorded here.
 
+## 1.2.5 - 2026-06-01
+
+### Added
+
+- Added the Eve & Lace logo favicon for browser tabs and saved shortcuts.
+
 ## 1.2.4 - 2026-06-01
 
 ### Changed
