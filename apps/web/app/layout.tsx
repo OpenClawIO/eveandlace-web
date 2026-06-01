@@ -7,19 +7,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.ico',
+        url: '/favicon-20260601.ico',
         type: 'image/x-icon'
       },
       {
-        url: '/favicon.png',
+        url: '/favicon-20260601.png',
         type: 'image/png',
         sizes: '192x192'
       }
     ],
-    shortcut: ['/favicon.ico'],
+    shortcut: ['/favicon-20260601.ico'],
     apple: [
       {
-        url: '/favicon.png',
+        url: '/favicon-20260601.png',
         type: 'image/png',
         sizes: '192x192'
       }

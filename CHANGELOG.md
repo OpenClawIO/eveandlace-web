@@ -2,6 +2,12 @@
 
 All notable project updates are recorded here.
 
+## 1.2.8 - 2026-06-01
+
+### Changed
+
+- Switched the storefront logo and favicon references to versioned asset URLs so browsers fetch the refreshed transparent logo instead of cached older icons.
+
 ## 1.2.7 - 2026-06-01
 
 ### Changed
