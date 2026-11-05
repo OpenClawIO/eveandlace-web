@@ -3,10 +3,12 @@
   "name": "eveandlace-web",
   "account_id": "fbc1a478353e6a6cb43a5a464e713c4f",
   "main": "src/worker.ts",
-  "compatibility_date": "2026-05-20",
+  "compatibility_date": "2026-11-05",
   "assets": {
     "directory": "./out",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
   },
   "kv_namespaces": [
     {
