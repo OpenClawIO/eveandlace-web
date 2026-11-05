@@ -39,7 +39,7 @@ export const fallbackProducts: StoreProduct[] = [
     title: 'Lace Underwire Set',
     category: 'Sets',
     price: '$22.99',
-    image: '/assets/eve-lace/product-lace-set.png',
+    image: '/assets/eve-lace/product-lace-set.webp',
     href: sourceUrl,
     updatedAt: '2026-05-18T20:42:00+08:00'
   },
@@ -48,7 +48,7 @@ export const fallbackProducts: StoreProduct[] = [
     title: 'Floral Embroidery Set',
     category: 'Sets',
     price: '$24.99',
-    image: '/assets/eve-lace/product-floral-set.png',
+    image: '/assets/eve-lace/product-floral-set.webp',
     href: sourceUrl,
     updatedAt: '2026-05-18T20:42:00+08:00'
   },
@@ -57,7 +57,7 @@ export const fallbackProducts: StoreProduct[] = [
     title: 'Lace Bodysuit',
     category: 'Bodysuits',
     price: '$19.99',
-    image: '/assets/eve-lace/product-bodysuit.png',
+    image: '/assets/eve-lace/product-bodysuit.webp',
     href: sourceUrl,
     updatedAt: '2026-05-18T20:42:00+08:00'
   },
@@ -66,7 +66,7 @@ export const fallbackProducts: StoreProduct[] = [
     title: 'Satin Lace Robe',
     category: 'Robes',
     price: '$26.99',
-    image: '/assets/eve-lace/product-robe.png',
+    image: '/assets/eve-lace/product-robe.webp',
     href: sourceUrl,
     updatedAt: '2026-05-18T20:42:00+08:00'
   },
@@ -75,7 +75,7 @@ export const fallbackProducts: StoreProduct[] = [
     title: 'Strappy Teddy',
     category: 'Bodysuits',
     price: '$18.99',
-    image: '/assets/eve-lace/product-teddy.png',
+    image: '/assets/eve-lace/product-teddy.webp',
     href: sourceUrl,
     updatedAt: '2026-05-18T20:42:00+08:00'
   },
@@ -84,7 +84,7 @@ export const fallbackProducts: StoreProduct[] = [
     title: 'Sheer Lace Set',
     category: 'Sets',
     price: '$21.99',
-    image: '/assets/eve-lace/product-sheer-set.png',
+    image: '/assets/eve-lace/product-sheer-set.webp',
     href: sourceUrl,
     updatedAt: '2026-05-18T20:42:00+08:00'
   },
@@ -93,7 +93,7 @@ export const fallbackProducts: StoreProduct[] = [
     title: 'Lingerie Accessory Set',
     category: 'Accessories',
     price: '$12.99',
-    image: '/assets/eve-lace/product-accessory.png',
+    image: '/assets/eve-lace/product-accessory.webp',
     href: sourceUrl,
     updatedAt: '2026-05-18T20:42:00+08:00'
   }
@@ -112,28 +112,28 @@ export const fallbackData: StorefrontData = {
       id: 'sets',
       name: 'Lingerie Sets',
       href: sourceUrl,
-      image: '/assets/eve-lace/product-lace-set.png',
+      image: '/assets/eve-lace/product-lace-set.webp',
       cta: 'Shop Sets'
     },
     {
       id: 'bodysuits',
       name: 'Bodysuits',
       href: sourceUrl,
-      image: '/assets/eve-lace/product-teddy.png',
+      image: '/assets/eve-lace/product-teddy.webp',
       cta: 'Shop Bodysuits'
     },
     {
       id: 'robes',
       name: 'Robes & Sleep',
       href: sourceUrl,
-      image: '/assets/eve-lace/product-robe.png',
+      image: '/assets/eve-lace/product-robe.webp',
       cta: 'Shop Robes'
     },
     {
       id: 'accessories',
       name: 'Accessories',
       href: sourceUrl,
-      image: '/assets/eve-lace/product-accessory.png',
+      image: '/assets/eve-lace/product-accessory.webp',
       cta: 'Shop Accessories'
     }
   ],
@@ -149,12 +149,43 @@ export function isStorefrontData(value: unknown): value is StorefrontData {
   }
 
   const candidate = value as Partial<StorefrontData>;
-  return Boolean(
-    candidate.brand &&
-    candidate.sourceUrl &&
-    Array.isArray(candidate.products) &&
-    candidate.products.length > 0
-  );
+  if (
+    typeof candidate.brand !== 'string' ||
+    typeof candidate.sourceUrl !== 'string' ||
+    typeof candidate.lastRefreshed !== 'string' ||
+    !isHttpUrl(candidate.sourceUrl) ||
+    Number.isNaN(Date.parse(candidate.lastRefreshed)) ||
+    !Array.isArray(candidate.products) ||
+    candidate.products.length === 0 ||
+    candidate.products.length > 100
+  ) {
+    return false;
+  }
+
+  return candidate.products.every((product) => {
+    if (!product || typeof product !== 'object') return false;
+    const item = product as Partial<StoreProduct>;
+    return Boolean(
+      typeof item.id === 'string' &&
+      typeof item.title === 'string' &&
+      typeof item.price === 'string' &&
+      typeof item.image === 'string' &&
+      typeof item.href === 'string' &&
+      typeof item.updatedAt === 'string' &&
+      item.id.length <= 160 &&
+      item.title.length <= 200 &&
+      isHttpUrl(item.href)
+    );
+  });
+}
+
+function isHttpUrl(value: string) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' || url.protocol === 'http:';
+  } catch {
+    return false;
+  }
 }
 
 export async function getStorefrontData(): Promise<StorefrontData> {

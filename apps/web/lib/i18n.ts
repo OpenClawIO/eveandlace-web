@@ -15,7 +15,7 @@ export const locales: Array<{ code: Locale; label: string; href: string }> = [
 
 export const dictionaries = {
   en: {
-    topStrip: ['Worldwide shipping', 'Discreet packaging', 'Secure checkout'],
+    topStrip: ['18+ only', 'Curated storefront', 'Checkout on AliExpress'],
     nav: {
       newIn: 'New In',
       sets: 'Sets',
@@ -33,15 +33,16 @@ export const dictionaries = {
     productCount: 'Listed products',
     viewAll: 'View all',
     services: [
-      ['Quality you can feel', 'Carefully selected fabrics and thoughtful details for daily confidence.'],
-      ['Find your fit', 'Inclusive sizing notes and a clear fit guide before you order.'],
-      ['Discreet by design', 'Plain packaging and private checkout details for peace of mind.'],
-      ['Secure & private', 'Checkout routes through trusted marketplace infrastructure.']
+      ['Browse the current edit', 'Explore a small, curated view of the marketplace catalog.'],
+      ['Check the listing', 'Confirm size, material, color, and availability on the product listing before ordering.'],
+      ['Marketplace checkout', 'Orders and payment are completed on AliExpress, not on this website.'],
+      ['Source transparency', 'Catalog status and the source store are shown so you can verify details.']
     ],
-    syncTitle: 'Store sync status',
+    syncTitle: 'Catalog status',
     lastRefresh: 'Last refresh',
     source: 'Source',
-    syncCopy: 'Product data is loaded through the storefront data layer, so the page can refresh as your marketplace catalog changes.',
+    syncCopy: 'Catalog data was loaded from the configured store source. Confirm final details on the marketplace listing.',
+    fallbackNotice: 'Showing the last curated catalog snapshot. Confirm current price, availability, shipping, and returns on AliExpress.',
     viewSource: 'View source store',
     newsletterTitle: 'Stay in the know',
     newsletterCopy: 'New arrivals, exclusive offers, and fit notes sent quietly to your inbox.',
@@ -57,10 +58,12 @@ export const dictionaries = {
     contactEmail: 'iamhuman.api@gmail.com',
     contactTel: '+1 980 999 0101',
     contactLocation: 'Nanjing, China',
+    beforeOrderTitle: 'Before you order',
+    beforeOrderCopy: 'Product details, payment, shipping, and returns are handled by AliExpress. Review the current listing before ordering.',
     ageNote: '18+ Only. This site sells adult products. By entering, you confirm you are 18 years of age or older.'
   },
   zh: {
-    topStrip: ['全球配送', '隐私包装', '安全结账'],
+    topStrip: ['仅限 18 岁以上', '精选展示', '在 AliExpress 结账'],
     nav: {
       newIn: '新品',
       sets: '套装',
@@ -78,15 +81,16 @@ export const dictionaries = {
     productCount: '上架商品数量',
     viewAll: '查看全部',
     services: [
-      ['触手可感的品质', '精选面料与细节设计，为日常自信加一点温柔。'],
-      ['找到合适尺码', '提供包容性尺码信息和清晰的下单前参考。'],
-      ['隐私友好设计', '普通包装与私密结账细节，让购买更安心。'],
-      ['安全与隐私', '通过可信的平台基础设施完成结账流程。']
+      ['浏览当前精选', '查看来自平台店铺的小型精选商品目录。'],
+      ['核对商品页面', '下单前请在商品页面确认尺码、材质、颜色和库存。'],
+      ['平台结账', '订单与付款在 AliExpress 完成，本网站不处理支付。'],
+      ['来源透明', '页面展示目录状态与来源店铺，便于核实信息。']
     ],
-    syncTitle: '店铺同步状态',
+    syncTitle: '商品目录状态',
     lastRefresh: '最近刷新',
     source: '来源',
-    syncCopy: '商品数据通过独立站数据层加载，因此页面可以随着平台店铺目录变化而刷新。',
+    syncCopy: '商品目录来自已配置的店铺数据源，最终信息请以平台商品页面为准。',
+    fallbackNotice: '当前展示最近一次人工整理的目录快照。价格、库存、配送和退换政策请在 AliExpress 核实。',
     viewSource: '查看来源店铺',
     newsletterTitle: '订阅新品动态',
     newsletterCopy: '新品、专属优惠和尺码建议，将安静地发送到你的邮箱。',
@@ -102,10 +106,12 @@ export const dictionaries = {
     contactEmail: 'iamhuman.api@gmail.com',
     contactTel: '+1 980 999 0101',
     contactLocation: '中国南京',
+    beforeOrderTitle: '下单前请确认',
+    beforeOrderCopy: '商品详情、付款、配送和退换均由 AliExpress 处理。下单前请查看最新商品页面。',
     ageNote: '仅限 18 岁以上。本网站销售成人用品。进入即表示你确认已年满 18 岁。'
   },
   es: {
-    topStrip: ['Envíos internacionales', 'Empaque discreto', 'Pago seguro'],
+    topStrip: ['Solo mayores de 18', 'Selección curada', 'Pago en AliExpress'],
     nav: {
       newIn: 'Novedades',
       sets: 'Conjuntos',
@@ -123,15 +129,16 @@ export const dictionaries = {
     productCount: 'Productos publicados',
     viewAll: 'Ver todo',
     services: [
-      ['Calidad que se siente', 'Telas cuidadosamente seleccionadas y detalles pensados para la confianza diaria.'],
-      ['Encuentra tu ajuste', 'Notas de tallas inclusivas y una guía clara antes de comprar.'],
-      ['Diseño discreto', 'Empaque sencillo y detalles de pago privado para mayor tranquilidad.'],
-      ['Seguro y privado', 'El pago se procesa mediante infraestructura confiable del marketplace.']
+      ['Explora la selección actual', 'Consulta una selección breve del catálogo del marketplace.'],
+      ['Revisa el anuncio', 'Confirma talla, material, color y disponibilidad antes de comprar.'],
+      ['Pago en el marketplace', 'Los pedidos y pagos se completan en AliExpress, no en este sitio.'],
+      ['Fuente transparente', 'Mostramos el estado del catálogo y la tienda de origen para verificar detalles.']
     ],
-    syncTitle: 'Estado de sincronización',
+    syncTitle: 'Estado del catálogo',
     lastRefresh: 'Última actualización',
     source: 'Fuente',
-    syncCopy: 'Los datos de producto se cargan mediante la capa de datos del sitio para refrescar la página cuando cambie el catálogo.',
+    syncCopy: 'El catálogo procede de la fuente configurada. Confirma los detalles finales en el anuncio del marketplace.',
+    fallbackNotice: 'Se muestra la última selección guardada. Confirma precio, disponibilidad, envío y devoluciones en AliExpress.',
     viewSource: 'Ver tienda fuente',
     newsletterTitle: 'Mantente al día',
     newsletterCopy: 'Novedades, ofertas exclusivas y notas de ajuste enviadas discretamente a tu correo.',
@@ -147,10 +154,12 @@ export const dictionaries = {
     contactEmail: 'iamhuman.api@gmail.com',
     contactTel: '+1 980 999 0101',
     contactLocation: 'Nankín, China',
+    beforeOrderTitle: 'Antes de comprar',
+    beforeOrderCopy: 'AliExpress gestiona los detalles, el pago, el envío y las devoluciones. Revisa el anuncio actual antes de comprar.',
     ageNote: 'Solo para mayores de 18 años. Este sitio vende productos para adultos. Al entrar, confirmas que tienes 18 años o más.'
   },
   fr: {
-    topStrip: ['Livraison internationale', 'Emballage discret', 'Paiement sécurisé'],
+    topStrip: ['18 ans et plus', 'Sélection éditée', 'Paiement sur AliExpress'],
     nav: {
       newIn: 'Nouveautés',
       sets: 'Ensembles',
@@ -168,15 +177,16 @@ export const dictionaries = {
     productCount: 'Produits en ligne',
     viewAll: 'Tout voir',
     services: [
-      ['Une qualité qui se ressent', 'Matières soigneusement choisies et détails pensés pour une confiance au quotidien.'],
-      ['Trouvez votre taille', 'Notes de taille inclusives et guide clair avant de commander.'],
-      ['Discret par design', 'Emballage simple et paiement privé pour plus de tranquillité.'],
-      ['Sécurisé et privé', 'Paiement via une infrastructure marketplace fiable.']
+      ['Parcourir la sélection', 'Découvrez une sélection concise du catalogue marketplace.'],
+      ['Vérifier la fiche', 'Confirmez taille, matière, couleur et disponibilité avant de commander.'],
+      ['Paiement marketplace', 'Les commandes et paiements sont effectués sur AliExpress, pas sur ce site.'],
+      ['Source transparente', 'L’état du catalogue et la boutique source sont indiqués pour vérification.']
     ],
-    syncTitle: 'État de synchronisation',
+    syncTitle: 'État du catalogue',
     lastRefresh: 'Dernière mise à jour',
     source: 'Source',
-    syncCopy: 'Les données produit sont chargées via la couche de données du site afin de suivre les changements du catalogue.',
+    syncCopy: 'Le catalogue provient de la source configurée. Vérifiez les détails finaux sur la fiche marketplace.',
+    fallbackNotice: 'La dernière sélection enregistrée est affichée. Vérifiez prix, disponibilité, livraison et retours sur AliExpress.',
     viewSource: 'Voir la boutique source',
     newsletterTitle: 'Restez informé',
     newsletterCopy: 'Nouveautés, offres exclusives et conseils de taille envoyés discrètement dans votre boîte mail.',
@@ -192,10 +202,12 @@ export const dictionaries = {
     contactEmail: 'iamhuman.api@gmail.com',
     contactTel: '+1 980 999 0101',
     contactLocation: 'Nankin, Chine',
+    beforeOrderTitle: 'Avant de commander',
+    beforeOrderCopy: 'AliExpress gère les détails, le paiement, la livraison et les retours. Consultez la fiche actuelle avant de commander.',
     ageNote: 'Réservé aux 18 ans et plus. Ce site vend des produits pour adultes. En entrant, vous confirmez avoir 18 ans ou plus.'
   },
   ar: {
-    topStrip: ['شحن عالمي', 'تغليف خاص', 'دفع آمن'],
+    topStrip: ['لمن هم 18 عاما فأكثر', 'اختيارات منسقة', 'الدفع عبر AliExpress'],
     nav: {
       newIn: 'وصل حديثا',
       sets: 'الأطقم',
@@ -213,15 +225,16 @@ export const dictionaries = {
     productCount: 'عدد المنتجات المعروضة',
     viewAll: 'عرض الكل',
     services: [
-      ['جودة يمكنك الشعور بها', 'أقمشة مختارة بعناية وتفاصيل مدروسة لثقة يومية.'],
-      ['اختاري المقاس المناسب', 'ملاحظات مقاسات شاملة ودليل واضح قبل الطلب.'],
-      ['خصوصية في التصميم', 'تغليف عادي وتفاصيل دفع خاصة لمزيد من الاطمئنان.'],
-      ['آمن وخاص', 'تتم عملية الدفع عبر بنية موثوقة من منصة التسوق.']
+      ['تصفحي الاختيارات الحالية', 'شاهدي مجموعة مختارة ومختصرة من كتالوج المنصة.'],
+      ['راجعي صفحة المنتج', 'تأكدي من المقاس والخامة واللون والتوفر قبل الطلب.'],
+      ['الدفع عبر المنصة', 'يتم الطلب والدفع على AliExpress وليس على هذا الموقع.'],
+      ['مصدر واضح', 'نعرض حالة الكتالوج والمتجر المصدر لتتمكني من التحقق من التفاصيل.']
     ],
-    syncTitle: 'حالة مزامنة المتجر',
+    syncTitle: 'حالة الكتالوج',
     lastRefresh: 'آخر تحديث',
     source: 'المصدر',
-    syncCopy: 'يتم تحميل بيانات المنتجات عبر طبقة بيانات المتجر، لذلك يمكن للصفحة التحديث عند تغير كتالوج المنصة.',
+    syncCopy: 'تم تحميل الكتالوج من المصدر المهيأ. تحققي من التفاصيل النهائية في صفحة المنتج على المنصة.',
+    fallbackNotice: 'نعرض آخر نسخة محفوظة من الكتالوج. تحققي من السعر والتوفر والشحن والإرجاع على AliExpress.',
     viewSource: 'عرض المتجر المصدر',
     newsletterTitle: 'ابقي على اطلاع',
     newsletterCopy: 'الجديد، العروض الحصرية، وملاحظات المقاس تصل بهدوء إلى بريدك.',
@@ -237,6 +250,8 @@ export const dictionaries = {
     contactEmail: 'iamhuman.api@gmail.com',
     contactTel: '+1 980 999 0101',
     contactLocation: 'نانجينغ، الصين',
+    beforeOrderTitle: 'قبل الطلب',
+    beforeOrderCopy: 'يتولى AliExpress تفاصيل المنتج والدفع والشحن والإرجاع. راجعي صفحة المنتج الحالية قبل الطلب.',
     ageNote: 'لمن هم 18 عاما فأكثر فقط. يبيع هذا الموقع منتجات للبالغين. بدخولك تؤكد أن عمرك 18 عاما أو أكثر.'
   }
 } satisfies Record<Locale, Record<string, unknown>>;

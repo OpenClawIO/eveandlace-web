@@ -4,6 +4,10 @@ node_modules
 out
 dist
 coverage
+playwright-report
+test-results
+lighthouse-reports
+.lighthouseci
 .env
 .env.local
 .DS_Store

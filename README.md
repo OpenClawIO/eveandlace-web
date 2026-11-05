@@ -54,20 +54,27 @@ pnpm --filter web dev
 ### 构建与检查
 
 ```bash
-pnpm --filter web typecheck
-pnpm --filter web build
+pnpm audit:prod
+pnpm typecheck
+pnpm test:coverage
+pnpm build
+pnpm lighthouse:ci
+pnpm test:e2e
 ```
 
 静态导出产物位于 `apps/web/out`。
 
+Pull Request 会通过 GitHub Actions 执行上述安全、类型、单元、Lighthouse 和端到端检查。生产部署只会在 `main` 分支的 CI 全部通过后启动。
+
 ### 部署
 
 ```bash
-cd apps/web
-npx wrangler deploy
+pnpm verify
+pnpm --filter web exec wrangler deploy
 ```
 
 当前部署通过 `apps/web/wrangler.jsonc` 绑定自定义域名 `eveandlace.com`。
+自动部署需要在 GitHub `production` Environment 中配置 `CLOUDFLARE_API_TOKEN` 和 `CLOUDFLARE_ACCOUNT_ID`。手动商品同步还必须在 Cloudflare Worker Secret 中配置 `SYNC_SECRET`；未配置时接口会安全拒绝请求。
 
 ### 商品数据更新
 
@@ -196,20 +203,27 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Build And Typecheck
 
 ```bash
-pnpm --filter web typecheck
-pnpm --filter web build
+pnpm audit:prod
+pnpm typecheck
+pnpm test:coverage
+pnpm build
+pnpm lighthouse:ci
+pnpm test:e2e
 ```
 
 The static export is written to `apps/web/out`.
 
+Pull requests run the security audit, type checks, unit coverage, Lighthouse, and end-to-end checks in GitHub Actions. Production deployment begins only after CI passes on `main`.
+
 ### Deploy
 
 ```bash
-cd apps/web
-npx wrangler deploy
+pnpm verify
+pnpm --filter web exec wrangler deploy
 ```
 
 The current deployment is routed to the custom domain `eveandlace.com` through `apps/web/wrangler.jsonc`.
+Automated deployment requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in the GitHub `production` Environment. Manual catalog sync also requires the `SYNC_SECRET` Cloudflare Worker secret; the endpoint fails closed when it is missing.
 
 ### Store Data Updates
 

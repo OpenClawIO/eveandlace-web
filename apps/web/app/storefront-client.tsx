@@ -15,6 +15,10 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
   const t = dictionaries[locale];
 
   useEffect(() => {
+    if (window.location.hostname !== 'eveandlace.com') {
+      return;
+    }
+
     let active = true;
 
     fetch('/api/storefront-data', {
@@ -42,7 +46,7 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
   const categories = useMemo(() => store.categories.map((category) => localizeCategory(category, locale)), [store.categories, locale]);
 
   return (
-    <main dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
+    <main>
       <div className="top-strip" aria-label="Store promises">
         {t.topStrip.map((item) => (
           <span key={item}>{item}</span>
@@ -51,7 +55,13 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
 
       <header className="site-header">
         <a className="brand" href={locale === 'en' ? '/' : `/${locale}`} aria-label="Eve & Lace home">
-          <img className="brand-logo brand-logo-header" src="/assets/eve-lace/logo-mark-20260601.png" alt={store.brand} />
+          <img
+            className="brand-logo brand-logo-header"
+            src="/assets/eve-lace/logo-mark-20260601.webp"
+            alt={store.brand}
+            width="180"
+            height="180"
+          />
         </a>
         <nav aria-label="Primary navigation">
           <a href="#new-in">{t.nav.newIn}</a>
@@ -68,7 +78,7 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
               </a>
             ))}
           </div>
-          <a className="header-action" href={store.sourceUrl}>
+          <a className="header-action" href={store.sourceUrl} target="_blank" rel="noopener noreferrer sponsored">
             {t.headerAction}
           </a>
         </div>
@@ -82,12 +92,23 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
             <a className="button button-dark" href="#new-in">
               {t.shopNew}
             </a>
-            <a className="button button-light" href={store.sourceUrl}>
+            <a className="button button-light" href={store.sourceUrl} target="_blank" rel="noopener noreferrer sponsored">
               {t.viewStore}
             </a>
           </div>
         </div>
-        <div className="hero-media" aria-label="Eve & Lace editorial lingerie visual" />
+        <div className="hero-media">
+          <picture>
+            <source srcSet="/assets/eve-lace/hero.avif" type="image/avif" />
+            <img
+              src="/assets/eve-lace/hero.webp"
+              alt="Eve & Lace editorial collection"
+              width="920"
+              height="345"
+              fetchPriority="high"
+            />
+          </picture>
+        </div>
       </section>
 
       <section className="product-section" id="new-in">
@@ -99,17 +120,36 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
               {t.productCount}: {listedProducts.length}
             </p>
           </div>
-          <a href={store.sourceUrl}>{t.viewAll}</a>
+          <a href={store.sourceUrl} target="_blank" rel="noopener noreferrer sponsored">{t.viewAll}</a>
         </div>
 
         <div className="product-rail">
-          {listedProducts.map((product) => (
-            <a className="product-card" href={product.href} key={product.id}>
-              <img src={product.image} alt={product.title} />
-              <span>{product.title}</span>
-              <strong>{product.price}</strong>
-            </a>
-          ))}
+          {listedProducts.map((product) => {
+            const hasDirectLink = product.href !== store.sourceUrl;
+            const content = (
+              <>
+                <div className="product-image-frame">
+                  <img src={product.image} alt={product.title} width="147" height="180" loading="lazy" />
+                </div>
+                <span>{product.title}</span>
+                <strong>{product.price}</strong>
+              </>
+            );
+
+            return hasDirectLink ? (
+              <a
+                className="product-card"
+                href={product.href}
+                key={product.id}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+              >
+                {content}
+              </a>
+            ) : (
+              <article className="product-card" key={product.id}>{content}</article>
+            );
+          })}
         </div>
       </section>
 
@@ -120,6 +160,8 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
             href={category.href}
             id={category.id === 'sets' || category.id === 'bodysuits' ? category.id : undefined}
             key={category.id}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
             style={{ backgroundImage: `linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.18)), url(${category.image})` }}
           >
             <span>{category.name}</span>
@@ -149,28 +191,27 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
             <p>
               {t.source}: AliExpress Store <a href={store.sourceUrl}>{store.storeId}</a>
             </p>
-            <p className="sync-note">{t.syncCopy}</p>
+            <p className="sync-note">
+              {store.syncStatus?.source === 'fallback' ? t.fallbackNotice : t.syncCopy}
+            </p>
           </div>
-          <a className="button button-light" href={store.sourceUrl}>
+          <a className="button button-light" href={store.sourceUrl} target="_blank" rel="noopener noreferrer sponsored">
             {t.viewSource}
           </a>
-        </article>
-
-        <article className="newsletter">
-          <h2>{t.newsletterTitle}</h2>
-          <p>{t.newsletterCopy}</p>
-          <form>
-            <input aria-label="Email address" placeholder={t.emailPlaceholder} type="email" />
-            <button type="submit">{t.subscribe}</button>
-          </form>
-          <span>{t.privacy}</span>
         </article>
       </section>
 
       <footer className="site-footer">
         <div>
           <a className="brand" href={locale === 'en' ? '/' : `/${locale}`}>
-            <img className="brand-logo brand-logo-footer" src="/assets/eve-lace/logo-mark-20260601.png" alt={store.brand} />
+            <img
+              className="brand-logo brand-logo-footer"
+              src="/assets/eve-lace/logo-mark-20260601.webp"
+              alt={store.brand}
+              width="180"
+              height="180"
+              loading="lazy"
+            />
           </a>
           <p>{t.footerTagline}</p>
         </div>
@@ -180,17 +221,10 @@ export function StorefrontClient({ initialStore, locale }: StorefrontClientProps
           <a href="#sets">{t.nav.sets}</a>
           <a href="#bodysuits">{t.nav.bodysuits}</a>
         </div>
-        <div>
-          <h3>{t.footerHelp}</h3>
-          <a href="#fit">{t.nav.sizeGuide}</a>
-          <a href={store.sourceUrl}>{t.shipping}</a>
-          <a href={store.sourceUrl}>{t.returns}</a>
-        </div>
-        <div className="contact-info">
-          <h3>{t.contactTitle}</h3>
-          <a href={`mailto:${t.contactEmail}`}>{t.contactEmail}</a>
-          <a href={`tel:${t.contactTel.replaceAll(' ', '')}`}>{t.contactTel}</a>
-          <span>{t.contactLocation}</span>
+        <div className="marketplace-note">
+          <h3>{t.beforeOrderTitle}</h3>
+          <p>{t.beforeOrderCopy}</p>
+          <a href={store.sourceUrl} target="_blank" rel="noopener noreferrer sponsored">{t.viewSource}</a>
         </div>
         <div className="age-note">
           <strong>18+</strong>
